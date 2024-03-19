@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net472</TargetFramework>
+
+		<DebugType>none</DebugType>
+		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+		<GenerateDependencyFile>false</GenerateDependencyFile>
+		<Optimize>True</Optimize>
+		<Configurations>Debug;Release;v3Release;v4Release</Configurations>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\AdGrowth.Interfaces\AdGrowth.Interfaces.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="GodotSharp">
+			<HintPath>..\..\..\ad-server-godot-game\.mono\assemblies\Debug\GodotSharp.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+</Project>

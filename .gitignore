@@ -1,0 +1,5 @@
+/export/v3
+/export/v4
+!/export/AdServerPlugin.gdap
+*.aar
+*.zip

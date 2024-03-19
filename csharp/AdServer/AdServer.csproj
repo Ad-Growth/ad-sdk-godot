@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+	<PropertyGroup>
+		<Version>1.0.0</Version>
+		<Configurations>Debug;Release;v3Release;v4Release</Configurations>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='v4Release|AnyCPU'">
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='v3Release|AnyCPU'">
+		<TargetFramework>net472</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\AdGrowth.Interfaces\AdGrowth.Interfaces.csproj" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<ProjectReference Include="..\AdGrowth.Godot.v3\AdGrowth.Godot.v3.csproj" Condition="'$(Configuration)|$(Platform)'=='v3Release|AnyCPU'" />
+		<ProjectReference Include="..\AdGrowth.Godot.v4\AdGrowth.Godot.v4.csproj" Condition="'$(Configuration)|$(Platform)'=='v4Release|AnyCPU'" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<Reference Include="GodotSharp" Condition="'$(Configuration)|$(Platform)'=='v3Release|AnyCPU'">
+			<HintPath>..\..\..\ad-server-godot-game\.mono\assemblies\Debug\GodotSharp.dll</HintPath>
+		</Reference>
+
+		<!--<PackageReference Include="GodotSharp" Version="4.2.1" Condition="'$(Configuration)|$(Platform)'=='v4Release|AnyCPU'" />-->
+
+	</ItemGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='v3Release|AnyCPU'">
+		<DebugType>none</DebugType>
+		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+		<GenerateDependencyFile>false</GenerateDependencyFile>
+		<Optimize>True</Optimize>
+		<OutputPath>..\..\export\v3\AdServer</OutputPath>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='v4Release|AnyCPU'">
+		<DebugType>none</DebugType>
+		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+		<GenerateDependencyFile>false</GenerateDependencyFile>
+		<Optimize>True</Optimize>
+		<OutputPath>..\..\export\v4\AdServer</OutputPath>
+	</PropertyGroup>
+
+
+</Project>

@@ -1,0 +1,10 @@
+[config]
+
+name="AdServerPlugin"
+binary_type="local"
+binary="AdServerPlugin.aar"
+
+[dependencies]
+local=[]
+remote=["com.github.Ad-Growth:ad-sdk-android:f62d3d5903"]
+custom_maven_repos=["https://jitpack.io"]
