@@ -8,6 +8,7 @@
 		<GenerateDependencyFile>false</GenerateDependencyFile>
 		<Optimize>True</Optimize>
 		<Configurations>Debug;Release;v3Release;v4Release</Configurations>
+		<TargetName>AdGrowth.Godot</TargetName>
 	</PropertyGroup>
 	
 	<ItemGroup>
