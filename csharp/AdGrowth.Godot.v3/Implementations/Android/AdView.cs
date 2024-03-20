@@ -69,7 +69,7 @@ public class AndroidAdView : Node, IAdView
 
     public void SetPosition(int x, int y)
     {
-        _javaAdView.Call("setPosition", _instanceId, x, y);
+        _javaAdView.Call("setPositionXY", _instanceId, x, y);
     }
 
     public void EnableSafeArea(bool enable)
