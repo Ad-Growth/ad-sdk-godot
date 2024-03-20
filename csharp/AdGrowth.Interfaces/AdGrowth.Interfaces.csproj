@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net472</TargetFramework>
+		<DebugType>none</DebugType>
+		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+		<GenerateDependencyFile>false</GenerateDependencyFile>
+		<Optimize>True</Optimize>
+		<Configurations>Debug;Release;v3Release;v4Release</Configurations>
+	</PropertyGroup>
+
+</Project>

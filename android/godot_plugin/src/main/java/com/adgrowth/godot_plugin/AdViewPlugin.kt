@@ -182,6 +182,8 @@ class AdViewPlugin(godot: Godot?) : GodotPlugin(godot) {
         val settings = mAdSettings[instanceId]!!
         val layoutParams = (mAds[instanceId]!!.layoutParams as LayoutParams)
 
+        layoutParams.gravity = Gravity.NO_GRAVITY
+
         // use x and y for position
         if (settings["useSafeAreaInsets"] == true) {
             layoutParams.rightMargin = mEdgeInsets["right"]!!
@@ -223,8 +225,6 @@ class AdViewPlugin(godot: Godot?) : GodotPlugin(godot) {
             }
 
             override fun onDismissed() {
-                mAds.remove(instanceId)
-                mAdSettings.remove(instanceId)
                 emitSignal("onDismissed", instanceId)
             }
 
@@ -264,6 +264,8 @@ class AdViewPlugin(godot: Godot?) : GodotPlugin(godot) {
         if (ad.parent != null) {
             (ad.parent as ViewGroup).removeView(ad)
         }
+        mAds.remove(instanceId)
+        mAdSettings.remove(instanceId)
     }
 
     @UsedByGodot
