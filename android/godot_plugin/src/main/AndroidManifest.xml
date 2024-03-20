@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.adgrowth.godot_plugin">
+
+    <application>
+        <meta-data
+            android:name="org.godotengine.plugin.v1.${adServerPluginName}"
+            android:value="${godotPluginPackageName}.${adServerPluginName}" />
+        <meta-data
+            android:name="org.godotengine.plugin.v1.${adViewPluginName}"
+            android:value="${godotPluginPackageName}.${adViewPluginName}" />
+        <meta-data
+            android:name="org.godotengine.plugin.v1.${interstitialPluginName}"
+            android:value="${godotPluginPackageName}.${interstitialPluginName}" />
+        <meta-data
+            android:name="org.godotengine.plugin.v1.${rewardedAdPluginName}"
+            android:value="${godotPluginPackageName}.${rewardedAdPluginName}" />
+        <meta-data
+            android:name="org.godotengine.plugin.v2.${adServerPluginName}"
+            android:value="${godotPluginPackageName}.${adServerPluginName}" />
+        <meta-data
+            android:name="org.godotengine.plugin.v2.${adViewPluginName}"
+            android:value="${godotPluginPackageName}.${adViewPluginName}" />
+        <meta-data
+            android:name="org.godotengine.plugin.v2.${interstitialPluginName}"
+            android:value="${godotPluginPackageName}.${interstitialPluginName}" />
+        <meta-data
+            android:name="org.godotengine.plugin.v2.${rewardedAdPluginName}"
+            android:value="${godotPluginPackageName}.${rewardedAdPluginName}" />
+
+    </application>
+</manifest>

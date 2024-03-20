@@ -1,0 +1,68 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+def adServerPluginName = 'AdServerPlugin'
+def adViewPluginName = 'AdViewPlugin'
+def interstitialPluginName = 'InterstitialAdPlugin'
+def rewardedAdPluginName = 'RewardedAdPlugin'
+def pluginPackageName = 'com.adgrowth.godot_plugin'
+
+android {
+
+    namespace = pluginPackageName
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        manifestPlaceholders["adServerPluginName"] = adServerPluginName
+        manifestPlaceholders["adViewPluginName"] = adViewPluginName
+        manifestPlaceholders["interstitialPluginName"] = interstitialPluginName
+        manifestPlaceholders["rewardedAdPluginName"] = rewardedAdPluginName
+        manifestPlaceholders["godotPluginPackageName"] = pluginPackageName
+
+        buildConfigField("String", "ADSERVER_PLUGIN_NAME", "\"${adServerPluginName}\"")
+        buildConfigField("String", "ADVIEW_PLUGIN_NAME", "\"${adViewPluginName}\"")
+        buildConfigField("String", "INTERSTITIAL_AD_PLUGIN_NAME", "\"${interstitialPluginName}\"")
+        buildConfigField("String", "REWARDED_AD_PLUGIN_NAME", "\"${rewardedAdPluginName}\"")
+
+
+        libraryVariants.all { variant ->
+            variant.outputs.all { output ->
+                output.outputFileName = new File("../../../../../export", "AdServerPlugin.aar")
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation("org.godotengine:godot:4.2.0.stable")
+    implementation 'com.github.Ad-Growth:ad-sdk-android:f62d3d5903'
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.6.1'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+}
