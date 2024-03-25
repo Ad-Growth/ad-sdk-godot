@@ -1,5 +1,4 @@
-/export/v3
-/export/v4
-!/export/AdServerPlugin.gdap
+*.dll
 *.aar
 *.zip
+/export/v[34]/android/plugins
