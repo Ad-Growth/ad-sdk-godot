@@ -63,7 +63,6 @@ public partial class AndroidInterstitialAd : IInterstitialAd
     {
         return (string instanceId) =>
         {
-            Debug.Print($"LOADED INTERSTITIAL: {instanceId}, current: {_instanceId}");
             if (_instanceId != instanceId) return;
             OnLoad?.Invoke(this);
         };

@@ -1,5 +1,7 @@
 using System;
+using System.Diagnostics;
 using AdGrowth.Interfaces;
+using Godot;
 using Godot.Collections;
 
 public class AndroidClientProfile : IClientProfile
@@ -11,25 +13,26 @@ public class AndroidClientProfile : IClientProfile
 
     public override int age
     {
-        get { return (int)((Dictionary)_javaAdServer.Call("getClientProfile"))["age"]; }
+        get { return int.Parse((string)((Dictionary)_javaAdServer.Call("getClientProfile"))["age"]); }
+
         set { _javaAdServer.Call("setClientProfileField", "age", value.ToString()); }
     }
 
     public override int minAge
     {
-        get { return (int)((Dictionary)_javaAdServer.Call("getClientProfile"))["minAge"]; }
+        get { return int.Parse((string)((Dictionary)_javaAdServer.Call("getClientProfile"))["minAge"]); }
         set { _javaAdServer.Call("setClientProfileField", "minAge", value.ToString()); }
     }
 
     public override int maxAge
     {
-        get { return (int)((Dictionary)_javaAdServer.Call("getClientProfile"))["getMaxAge"]; }
-        set { _javaAdServer.Call("setClientProfileField", "getMaxAge", value.ToString()); }
+        get { return int.Parse((string)((Dictionary)_javaAdServer.Call("getClientProfile"))["maxAge"]); }
+        set { _javaAdServer.Call("setClientProfileField", "maxAge", value.ToString()); }
     }
 
     public override Gender gender
     {
-        get { return (Gender)Enum.Parse(typeof(Gender), (string)((Dictionary)_javaAdServer.Call("getClientProfile"))["getMaxAge"]); }
+        get { return (Gender)Enum.Parse(typeof(Gender), (string)((Dictionary)_javaAdServer.Call("getClientProfile"))["gender"]); }
         set { _javaAdServer.Call("setClientProfileField", "gender", Enum.GetName(typeof(Gender), value)); }
     }
     public override IClientAddress clientAddress
@@ -48,11 +51,16 @@ public class AndroidClientProfile : IClientProfile
         _javaAdServer.Call("removeInterest", interest);
     }
 
+    public override string[] GetInterests()
+    {
+        return (string[])_javaAdServer.Call("getInterests");
+    }
+
     public override string ToString()
     {
         var clientProfile = (Dictionary)_javaAdServer.Call("getClientProfile");
 
-        var interests = (string[])_javaAdServer.Call("getInterests");
+        var interests = GetInterests();
 
         return $"gender: {clientProfile["gender"]}," +
         $"\nage: {clientProfile["age"]}," +

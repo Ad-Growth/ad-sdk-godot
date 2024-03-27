@@ -24,13 +24,13 @@ public class AndroidClientProfile : IClientProfile
 
     public override int maxAge
     {
-        get { return (int)((Dictionary)_javaAdServer.Call("getClientProfile"))["getMaxAge"]; }
-        set { _javaAdServer.Call("setClientProfileField", "getMaxAge", value.ToString()); }
+        get { return (int)((Dictionary)_javaAdServer.Call("getClientProfile"))["maxAge"]; }
+        set { _javaAdServer.Call("setClientProfileField", "maxAge", value.ToString()); }
     }
 
     public override Gender gender
     {
-        get { return (Gender)Enum.Parse(typeof(Gender), (string)((Dictionary)_javaAdServer.Call("getClientProfile"))["getMaxAge"]); }
+        get { return (Gender)Enum.Parse(typeof(Gender), (string)((Dictionary)_javaAdServer.Call("getClientProfile"))["gender"]); }
         set { _javaAdServer.Call("setClientProfileField", "gender", Enum.GetName(typeof(Gender), value)!); }
     }
     public override IClientAddress clientAddress
@@ -49,11 +49,16 @@ public class AndroidClientProfile : IClientProfile
         _javaAdServer.Call("removeInterest", interest);
     }
 
+    public override string[] GetInterests()
+    {
+        return (string[])_javaAdServer.Call("getInterests");
+    }
+
     public override string ToString()
     {
         var clientProfile = (Dictionary)_javaAdServer.Call("getClientProfile");
 
-        var interests = (string[])_javaAdServer.Call("getInterests");
+        var interests = GetInterests();
 
         return $"gender: {clientProfile["gender"]}," +
         $"\nage: {clientProfile["age"]}," +

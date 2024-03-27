@@ -10,6 +10,7 @@ namespace AdGrowth.Interfaces
 
         public abstract void AddInterest(string interest);
         public abstract void RemoveInterest(string interest);
+        public abstract string[] GetInterests();
         public enum Gender
         {
             ALL, MALE, FEMALE

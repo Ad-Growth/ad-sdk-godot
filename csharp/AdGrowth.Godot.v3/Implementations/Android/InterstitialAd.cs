@@ -61,7 +61,6 @@ public class AndroidInterstitialAd : Godot.Object, IInterstitialAd
 
     public void _OnLoad(string instanceId)
     {
-        Debug.Print($"LOADED INTERSTITIAL: {instanceId}, current: {_instanceId}");
         if (_instanceId != instanceId) return;
         OnLoad?.Invoke(this);
     }

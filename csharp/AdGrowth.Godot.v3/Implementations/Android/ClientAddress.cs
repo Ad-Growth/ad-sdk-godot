@@ -1,4 +1,6 @@
+using System;
 using AdGrowth.Interfaces;
+using Godot;
 using Godot.Collections;
 
 
@@ -11,14 +13,25 @@ internal class AndroidClientAddress : IClientAddress
 
     public double latitude
     {
-        get { return (double)((Dictionary)_javaAdServer.Call("getClientAddress"))["latitude"]; }
-        set { _javaAdServer.Call("setClientAddressField", "latitude", value.ToString()); }
+        get
+        {
+            var latitude = ((Dictionary)_javaAdServer.Call("getClientAddress"))["latitude"];
+
+            if (latitude is float) return (double)(float)latitude;
+            return (double)latitude;
+        }
+        set { _javaAdServer.Call("setClientAddressField", "latitude", value.ToString().Replace(",", ".")); }
     }
 
     public double longitude
     {
-        get { return (double)((Dictionary)_javaAdServer.Call("getClientAddress"))["longitude"]; }
-        set { _javaAdServer.Call("setClientAddressField", "longitude", value.ToString()); }
+        get {
+            var longitude = ((Dictionary)_javaAdServer.Call("getClientAddress"))["longitude"];
+
+            if (longitude is float) return (double)(float)longitude;
+            return (double)longitude;
+        }
+        set { _javaAdServer.Call("setClientAddressField", "longitude", value.ToString().Replace(",", ".")); }
     }
 
     public string country

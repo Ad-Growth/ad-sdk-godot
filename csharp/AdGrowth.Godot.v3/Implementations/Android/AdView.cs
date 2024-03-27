@@ -37,8 +37,6 @@ public class AndroidAdView : Node, IAdView
             x,
             y
         );
-
-        Debug.Print($"instanceId: {_instanceId}, x: {x}, y: {y}");
     }
 
     public AndroidAdView(string unitId, AdSize adSize, AdOrientation adOrientation, AdPosition adPosition)

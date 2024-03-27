@@ -37,8 +37,6 @@ public partial class AndroidAdView : IAdView
             x,
             y
         );
-
-        Debug.Print($"instanceId: {_instanceId}, x: {x}, y: {y}");
     }
 
     private void NewMethod()
